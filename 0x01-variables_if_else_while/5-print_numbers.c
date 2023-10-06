@@ -1,16 +1,19 @@
 #include <stdio.h>
-/* more headers goes there */
+/* more headers goes here */
 
-/* betty style doc for function main goes there */
 /**
- * main - entry point of program
- * Return:always 0
+ * main - Entry point of the program
+ *
+ * Description: This function prints numbers from 0 to 9.
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
 	int i;
+
 	for (i = 0; i < 10; i++)
-		printf("%d", i);
+		printf(i);
 	printf("\n");
 	return (0);
 }
