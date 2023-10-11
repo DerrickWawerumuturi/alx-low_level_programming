@@ -1,6 +1,6 @@
 #include "main.h"
-/*
- *  _islower - is the entryg point
+/**
+ *  _islower - checks if a character is lowercase
  *  Return:1 or 0
  *  @c: is the parameter
  */
