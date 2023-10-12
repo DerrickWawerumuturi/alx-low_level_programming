@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * main - this isthe entry point of program
- * Return:0
+ * Return:0(success)
  */
 
 int main(void)
@@ -12,14 +13,17 @@ int main(void)
 	for (i = 1 ; i <= 100 ; i++)
 	{
 		if ((i % 3 == 0) && (i % 5 == 0))
-			printf("%s", "Fizz Buzz");
+			printf("Fizz Buzz");
 		else if (i % 3 == 0)
-			printf("%s", "Fizz");
+			printf("Fizz");
 		else if (i % 5 == 0)
-			printf("%s", "Buzz");
+			printf("Buzz");
 		else
 			printf("%d", i);
-		printf(" ");
+		if (i != 100)
+		{
+			printf(" ");
+		}
 	}
 	printf("\n");
 	return (0);
