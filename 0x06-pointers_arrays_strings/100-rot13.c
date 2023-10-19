@@ -1,26 +1,31 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * rot13 - encodes string
- * @str:string to be encoded
- * Return: encoded string
+ * rot13 - encoder rot13
+ * @str: pointer to string params
+ *
+ * Return: *s
  */
 
 char *rot13(char *str)
 {
-	int count;
+	int lopo;
+	int lupu;
+	char beforeot[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char afterot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	while (str[count] != '\0')
+	for (lopo = 0; str[lopo] != '\0'; lopo++)
 	{
-		char l = str[count];
-
-		if ((l >= 'a' && l <= 'z')||( l >= 'A' && l <= 'Z'))
+		for (lupu = 0; lupu < 52; lupu++)
 		{
-			char base = (l >= 'a' && l <= 'z') ? 'a' : 'A';
-
-			str[count] = (l - base + 13) % 26 + base;
+			if (str[lopo] == beforeot[lupu])
+			{
+				str[lopo] = afterot[lupu];
+				break;
+			}
 		}
-		count++;
 	}
 	return (str);
 }
+
