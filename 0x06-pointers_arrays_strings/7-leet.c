@@ -12,7 +12,7 @@ char *leet(char *str)
 	int loopString;
 
 	char replacing[] = "aAeEoOtTlL";
-	char replacement[] = "443007711";
+	char replacement[] = "4433007711";
 
 	for (loopInput = 0 ; str[loopInput] != '\0' ; loopInput++)
 	{
@@ -21,7 +21,6 @@ char *leet(char *str)
 			if (str[loopInput] == replacing[loopString])
 			{
 				str[loopInput] = replacement[loopString];
-				break;
 			}
 		}
 	}
