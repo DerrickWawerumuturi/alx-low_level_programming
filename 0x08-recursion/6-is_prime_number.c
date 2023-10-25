@@ -1,28 +1,30 @@
 #include "main.h"
-
+int find_prime(int n, int m);
 /**
- * is_prime_number - returns a prime number
- * @n: number to be checked
- * Return: 1 or 0
- */
-
+* is_prime_number - says if an integer is a prime number or not
+* @n: number to evaluate
+*
+* Return: 1 if n is a prime number, 0 if not
+*/
 int is_prime_number(int n)
 {
-	int i;
-
 	if (n <= 1)
 		return (0);
-	if (n <= 3)
-		return (1);
-	if (n % 2 == 0 || n % 3 == 0)
-		return (0);
-
-
-	for (i = 5 ; i * i <= n ; i += 6)
-	{
-		if (n % i == 0 || n % (1 + 2) == 0)
-			return (0);
-	}
-	return (1);
-
+	return (find_prime(n, n - 1));
 }
+/**
+* find_prime - calculates if a number is prime recursively
+* @n: number to evaluate
+* @m: iterator
+*
+* Return: 1 if n is prime, 0 if not
+*/
+int find_prime(int n, int m)
+{
+	if (m == 1)
+		return (1);
+	if (n % m == 0 && m > 0)
+		return (0);
+	return (find_prime(n, m - 1));
+}
+
