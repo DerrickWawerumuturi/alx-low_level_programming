@@ -10,5 +10,6 @@ int find_sqrt(int n, int guess, int prev_guess);
 int is_prime_number(int n);
 int is_palindrome(char *s);
 int _strlen_recursion(char *s);
+int wildcmp(char *s1, char *s2);
 void _puts_recursion(char *s);
 #endif
