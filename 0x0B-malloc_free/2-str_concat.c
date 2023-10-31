@@ -1,44 +1,40 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * str_concat - returns concentated string
- * @s1:first string
- * @s2:second string
- * Return:ptr on success and NULL on failure
+ * str_concat - concat two strings
+ * @s1: string one
+ * @s2: string two
+ * Return: pointer to the address of the concat string
  */
 
 char *str_concat(char *s1, char *s2)
 {
-	int i, j, dis1, dis2;
-	char *ptr;
+	int len1, len2, i;
+	char *s3;
 
 	if (s1 == NULL)
-		return (NULL);
+		s1 = "";
 	if (s2 == NULL)
-		return (NULL);
-
-	for (dis1 = 0; s1[dis1] != '\0' ; dis1++)
+		s2 = "";
+	for (len1 = 0; s1[len1] != '\0'; len1++)
 		;
-	for (dis2 = 0; s2[dis2] != '\0' ; dis2++)
+	for (len2 = 0; s2[len2] != '\0'; len2++)
 		;
+	s3 = malloc((len1 + len2 + 1) * sizeof(*s3));
+	len1 = 0;
+	len2 = 0;
 
-	ptr = (char *)malloc((dis1 + dis2 + 1) * sizeof(*ptr));
-
-	dis1 = 0;
-	dis2 = 0;
-
-	if (ptr == NULL)
+	if (s3 == NULL)
 		return (NULL);
-
-	for (i = 0 ; s1[dis1] != '\0' ; i++, dis1++)
-		ptr[i] = s1[dis1];
-	for (j = 0 ; s2[dis2] != '\0' ; j++, dis2++)
+	for (i = 0; s1[len1] != '\0'; i++, len1++)
 	{
-		ptr[i] = s2[dis2];
-		i++;
+		s3[i] = s1[len1];
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	for (; s2[len2] != '\0'; i++, len2++)
+	{
+		s3[i] = s2[len2];
+	}
+	s3[i] = '\0';
+	return (s3);
 }
