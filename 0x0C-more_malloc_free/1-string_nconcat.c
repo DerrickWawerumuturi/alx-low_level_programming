@@ -1,50 +1,42 @@
-#include "main.h"
 #include <stdlib.h>
 
 /**
- * string_nconcat - concats two strings
- * @s1: string one
- * @s2: string two
- * @n: bytes of s2 to be concat to s1
- * Return: pointer to concat string
+ * string_nconcat - concatenates two strings.
+ * @s1: first string
+ * @s2: second string
+ * @n: number of bytes from s2 to concatenate
+ *
+ * Return: a pointer to the concatenated string, or NULL on failure.
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int len1, len2, i = 0;
-	char *comb;
-	unsigned int j;
-	int num = n;
+	char *result;
+	unsigned int len1, len2, i;
 
 	if (s1 == NULL)
 		s1 = "";
+
 	if (s2 == NULL)
 		s2 = "";
 
 	for (len1 = 0; s1[len1] != '\0'; len1++)
 		;
-	for (len2 = 0; s2[len2] != '\0'; len2++)
+
+	for (len2 = 0; s2[len2] != '\0' && len2 < n; len2++)
 		;
 
-	if (num < 0)
+	result = malloc(len1 + len2 + 1);
+
+	if (result == NULL)
 		return (NULL);
 
-	if (num >= len2)
-		num = len2;
+	for (i = 0; i < len1; i++)
+		result[i] = s1[i];
 
-	comb = malloc(sizeof(*comb) * (len1 + num + 1));
-	if (comb == NULL) /*check for null */
-		return (NULL);
+	for (i = 0; i < len2; i++)
+		result[len1 + i] = s2[i];
 
-	len1 = 0;
-	len2 = 0;
-	/*concat strings*/
-	for (i = 0; s1[len1] != '\0'; i++, len1++)
-		comb[i] = s1[len1];
+	result[len1 + len2] = '\0';
 
-	for (i = i, j = 0; j < n; i++, j++)
-		comb[i] = s2[j];
-	comb[i] = '\0';
-
-	return (comb);
+	return (result);
 }
