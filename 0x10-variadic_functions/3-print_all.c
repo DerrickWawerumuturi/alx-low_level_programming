@@ -10,13 +10,10 @@
 
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	unsigned int i;
-	char *separator;
-	char *str;
+	int i = 0;
+	char *str, *separator = "";
 
-	i = 0;
-	separator = "";
+	va_list args;
 
 	va_start(args, format);
 
@@ -40,7 +37,8 @@ void print_all(const char * const format, ...)
 				printf("%s%s", separator, str);
 				break;
 			default:
-				break;
+				i++;
+				continue;
 
 		}
 		separator = ", ";
