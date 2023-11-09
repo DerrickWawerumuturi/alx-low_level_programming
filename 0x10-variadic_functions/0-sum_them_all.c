@@ -15,6 +15,7 @@ int sum_them_all(const unsigned int n, ...)
 	int s;
 
 	va_list args;
+
 	va_start(args, n);
 
 	s = 0;
@@ -29,6 +30,7 @@ int sum_them_all(const unsigned int n, ...)
 	{
 
 		int x = va_arg(args, int);
+
 		s += x;
 	}
 
