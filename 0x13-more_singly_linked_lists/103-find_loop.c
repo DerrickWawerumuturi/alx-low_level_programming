@@ -17,7 +17,6 @@ listint_t *find_listint_loop(listint_t *head)
 		if (before == temp)
 		{
 			before = head;
-			
 			while (before != temp)
 			{
 				before = before->next;
