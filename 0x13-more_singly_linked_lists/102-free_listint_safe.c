@@ -1,24 +1,37 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - frees listint_t list
- * @h: to be fred
- * Return:size that was freed
+ * free_listint_safe - frees a linekd list
+ * @h:poi102-free_listint_safe.c nter to first node in list
+ * Return: number of elemnts freed
  */
 
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *before = *h;
-	size_t size = 0;
+	size_t length = 0;
+	int tof;
+	listint_t *temp;
 
-	while (before != NULL)
+	if (!h || !*h)
+		return (0);
+	while (*h)
 	{
-		*h = before->next;
-		free(before);
-		before = *h;
-		size++;
+		tof = *h - (*h)->next;
+		if (tof > 0)
+		{
+			temp = (*h)->next;
+			free(*h);
+			*h = temp;
+			length++;
+		}
+		else
+		{
+			free(*h);
+			*h = NULL;
+			length++;
+			break;
+		}
 	}
-	before = NULL;
 	*h = NULL;
-	return (size);
+	return (length);
 }
