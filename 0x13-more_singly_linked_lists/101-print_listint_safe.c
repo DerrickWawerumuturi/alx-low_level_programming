@@ -12,16 +12,15 @@ size_t print_listint_safe(const listint_t *head)
 	size_t node_count = 0;
 
 	back = head;
-	front = head;
+	front = NULL;
 
-	while (back != NULL && front != NULL && front->next != NULL)
+	while (back != NULL)
 	{
-		printf("[%p] %d\n", (void *)back, back->n);
+		front = back;
+		back =  back->next;
 		node_count++;
-
-		back = back->next;
-		front = front->next->next;
-		if (back == front)
+		printf("[%p] %d\n", (void *)front, front->n);
+		if (front < back)
 		{
 			printf("-> [%p] %d\n", (void *)back, back->n);
 			exit(98);
