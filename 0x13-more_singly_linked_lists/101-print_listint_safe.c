@@ -9,7 +9,7 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *now = head, *before = NULL;
-	size_t id;
+	size_t id = 0;
 
 	if (now == NULL)
 		exit(98);
