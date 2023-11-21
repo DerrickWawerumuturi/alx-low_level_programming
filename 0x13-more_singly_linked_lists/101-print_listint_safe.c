@@ -14,6 +14,8 @@ size_t print_listint_safe(const listint_t *head)
 	back = head;
 	front = NULL;
 
+	if (back == NULL)
+		exit(98);
 	while (back != NULL)
 	{
 		front = back;
@@ -23,7 +25,7 @@ size_t print_listint_safe(const listint_t *head)
 		if (front < back)
 		{
 			printf("-> [%p] %d\n", (void *)back, back->n);
-			exit(98);
+			break;
 		}
 	}
 	return (node_count);
