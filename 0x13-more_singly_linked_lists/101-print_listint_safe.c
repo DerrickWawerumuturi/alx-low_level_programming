@@ -1,28 +1,29 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - prints a linked list
- * @head: pointer to the head of th liked list
- * Return: the number of nodes int he list
+ * print_listint_safe - prints a listint_t linked list
+ * @head: pointer to first node
+ * Return:number of nodes
  */
-
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t node_count = 0;
-	long int back;
+	const listint_t *current = head, *temp = NULL;
+	size_t id = 0;
 
-	while (head)
+	if (current == NULL)
+		exit(98);
+	while (current != NULL)
 	{
-		back = head - head->next;
-		node_count++;
-		printf("[%p] %d\n", (void *)head, head->n);
-		if (back > 0)
-			head = head->next;
-		else
+		temp = current;
+		current =  current->next;
+		id++;
+		printf("[%p] %d\n", (void *)temp, temp->n);
+		if (temp < current)
 		{
-			printf("->[%p] %d\n", (void *)head->next, head->next->n);
+			printf("-> [%p] %d\n", (void *)current, current->n);
 			break;
 		}
+
 	}
-	return (node_count);
+	return (id);
 }
