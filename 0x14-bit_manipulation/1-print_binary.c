@@ -1,28 +1,28 @@
 #include "main.h"
 
-/**
- * print_binary - prints the binary representation of a number
- * @n: the number
- * Return: void
- */
 
+/**
+ * print_binary - Entry point
+ * @n: the integer to find its binary code
+ */
 void print_binary(unsigned long int n)
 {
-	int i;
+	int b, count = 0;
+	unsigned long int former;
 
-	if (n == 0)
-		_putchar('0' + 0);
-	for (i = 31; i >= 0; i--)
+	for (b = 63; b >= 0; b--)
 	{
-		if ((n & (1 << i)) != 0)
-			break;
+		former = n >> b;
+
+		if (former & 1)
+		{
+			putchar('1');
+			count++;
+		}
+		else if (count)
+			putchar('0');
 	}
 
-	for (; i >= 0; i--)
-	{
-		if ((n & (1 << i)) != 0)
-			_putchar('1' + 0);
-		else
-			_putchar('0' + 0);
-	}
+	if (!count)
+		putchar('0');
 }

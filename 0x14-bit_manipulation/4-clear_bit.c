@@ -1,28 +1,16 @@
 #include "main.h"
 
 /**
- * clear_bit - sets value of a bit at given index to 0
- * @index: index
- * @n: address of the number
- * Return: 1 (success) or -1(failed)
+ * clear_bit - Entry point
+ * @index: index, starting from 0 of the bit you want to set
+ * @n: integer
+ * Return: 1 if it worked, or -1 if an error occurred
  */
-
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int i;
-	int new, addNum = 1;
-
-	if (index > 32)
+	if (index > 63)
 		return (-1);
-	if (*n == 0)
-		return (1);
-	new = *n >> index;
 
-	if ((new & 1) == 1)
-	{
-		for (i = 0; i < index; i++)
-			addNum *= 2;
-	}
-	*n -= addNum;
+	*n = (~(1UL << index) & *n);
 	return (1);
 }
