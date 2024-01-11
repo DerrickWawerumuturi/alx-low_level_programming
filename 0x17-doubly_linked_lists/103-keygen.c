@@ -1,37 +1,37 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "lists.h"
 
 /**
- * main - generate a key for username
+ * main - generate a key for a usernae
  * @argc: argument count
- * @argv: array with args passed
- *
- * Return: 0(success), 1(failed)
+ * @argv: argument vector
+ * Return: 0 on success
  */
+
 int main(int argc, char *argv[])
 {
 	unsigned int i, b;
 	size_t len, add;
 	char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-	char p[7] = "      ";
+	char p[7] = "		";
 
 	if (argc != 2)
 	{
-		printf("Correct usage: ./keygen5 username\n");
+		printf("correct usage: ./keygen5 userane\n");
 		return (1);
 	}
 	len = strlen(argv[1]);
 	p[0] = l[(len ^ 59) & 63];
-	for (i = 0, add = 0; i < len; i++)
+	for (i = 0, add = 0 ; i < len ; i++)
 		add += argv[1][i];
 	p[1] = l[(add ^ 79) & 63];
-	for (i = 0, b = 1; i < len; i++)
+	for (i = 0, add = 0; i < len; i++)
 		b *= argv[1][i];
 	p[2] = l[(b ^ 85) & 63];
-	for (b = argv[1][0], i = 0; i < len; i++)
+	for (b = argv[1][0], i = 0 ; i < len; i++)
+	{
 		if ((char)b <= argv[1][i])
 			b = argv[1][i];
+	}
 	srand(b ^ 14);
 	p[3] = l[rand() & 63];
 	for (b = 0, i = 0; i < len; i++)
